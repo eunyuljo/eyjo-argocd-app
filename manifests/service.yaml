@@ -10,5 +10,5 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 80
-  type: LoadBalancer  # 클러스터 외부에서 접근 가능하도록 설정
+  type: ClusterIP  # 클러스터 외부에서 접근 가능하도록 설정
 
