@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nginx-app
+  namespace: argocd  # ArgoCD가 설치된 네임스페이스
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/eunyuljo/my-argocd-app.git  # Git 저장소 URL
+    targetRevision: main
+    path: manifests  # 위에서 만든 매니페스트 폴더 경로
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+
